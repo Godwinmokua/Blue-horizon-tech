@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Horizon Tech | Home</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: #1a365d;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #4fc3f7;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: #ffffff;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            background-color: #2d4d7a;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a365d 0%, #2d4d7a 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #4fc3f7;
+            color: #1a365d;
+            padding: 0.8rem 1.8rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #29b6f6;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 3rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #1a365d;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: #4fc3f7;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .feature-card {
+            flex: 1;
+            min-width: 250px;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #4fc3f7;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: #1a365d;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a365d;
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-column h3 {
+            color: #4fc3f7;
+            margin-bottom: 1.2rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #4fc3f7;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #2d4d7a;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Page Specific Styles */
+        .page-header {
+            background-color: #2d4d7a;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .page-content {
+            padding: 3rem 0;
+        }
+        
+        .content-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .content-card h2 {
+            color: #1a365d;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .team-member {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .member-img {
+            height: 200px;
+            background-color: #e3f2fd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a365d;
+            font-size: 4rem;
+        }
+        
+        .member-info {
+            padding: 1.5rem;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #1a365d;
+            font-weight: 500;
+        }
+        
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0.3rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .features {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">Blue<span>Horizon</span>Tech</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="team.html">Our Team</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Innovating Tomorrow's Technology Today</h1>
+            <p>Blue Horizon Tech specializes in cutting-edge software solutions, cloud infrastructure, and digital transformation services for businesses of all sizes.</p>
+            <a href="about.html" class="btn">Learn More About Us</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <h2 class="section-title">Why Choose Blue Horizon Tech</h2>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Fast Implementation</h3>
+                    <p>We deliver solutions quickly without compromising on quality, ensuring you get to market faster.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure Solutions</h3>
+                    <p>Security is our top priority. All our products include enterprise-grade security features.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>Scalable Architecture</h3>
+                    <p>Our solutions grow with your business, easily scaling to meet increasing demands.</p>
+                </div>
+            </div>
+            
+            <div class="content-card">
+                <h2>Welcome to Blue Horizon Tech</h2>
+                <p>We are a technology company dedicated to providing innovative software solutions that help businesses transform and thrive in the digital age. With over a decade of experience, our team of experts delivers cutting-edge technology services tailored to your specific needs.</p>
+                <p>Our mission is to bridge the gap between complex technology and business objectives, creating solutions that are both powerful and easy to use.</p>
+                <p>Explore our website to learn more about our services, products, and the talented team behind our success.</p>
+                
+                <div style="margin-top: 2rem;">
+                    <a href="services.html" class="btn" style="margin-right: 1rem;">View Our Services</a>
+                    <a href="contact.html" class="btn" style="background-color: #1a365d; color: white;">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Blue Horizon Tech</h3>
+                    <p>Innovating tomorrow's technology today. We provide cutting-edge software solutions for modern businesses.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="products.html">Products</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Other Pages</h3>
+                    <ul>
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li>123 Tech Avenue</li>
+                        <li>San Francisco, CA 94107</li>
+                        <li>contact@bluehorizontech.com</li>
+                        <li>(555) 123-4567</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Blue Horizon Tech. All rights reserved. | This website is a project for educational purposes.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

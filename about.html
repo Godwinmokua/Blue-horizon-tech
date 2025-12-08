@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Blue Horizon Tech</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: #1a365d;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #4fc3f7;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: #ffffff;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            background-color: #2d4d7a;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background-color: #2d4d7a;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Page Content */
+        .page-content {
+            padding: 3rem 0;
+        }
+        
+        .content-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .content-card h2 {
+            color: #1a365d;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 3rem auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #4fc3f7;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            margin: 2rem 0;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-content h3 {
+            color: #1a365d;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-content .date {
+            color: #4fc3f7;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Stats Section */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .stat-item {
+            margin: 1rem;
+            padding: 1.5rem;
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #1a365d;
+            display: block;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        /* Button */
+        .btn {
+            display: inline-block;
+            background-color: #4fc3f7;
+            color: #1a365d;
+            padding: 0.8rem 1.8rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #29b6f6;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a365d;
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-column h3 {
+            color: #4fc3f7;
+            margin-bottom: 1.2rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #4fc3f7;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #2d4d7a;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0.3rem;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">Blue<span>Horizon</span>Tech</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="team.html">Our Team</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>About Blue Horizon Tech</h1>
+            <p>Learn about our mission, history, and values</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="page-content">
+        <div class="container">
+            <div class="content-card">
+                <h2>Our Story</h2>
+                <p>Founded in 2010, Blue Horizon Tech began as a small startup with a big vision: to make advanced technology accessible and beneficial for businesses of all sizes. What started as a three-person team working out of a garage has grown into a respected technology firm with over 150 employees and clients across the globe.</p>
+                <p>Our journey has been guided by a commitment to innovation, quality, and customer satisfaction. We believe that technology should solve real problems and create tangible value for our clients.</p>
+            </div>
+            
+            <div class="content-card">
+                <h2>Our Mission & Values</h2>
+                <p>At Blue Horizon Tech, our mission is to empower businesses through innovative technology solutions that drive growth, efficiency, and competitive advantage.</p>
+                
+                <h3 style="margin-top: 1.5rem; color: #2d4d7a;">Our Core Values:</h3>
+                <ul style="padding-left: 1.5rem; margin-top: 1rem;">
+                    <li style="margin-bottom: 0.8rem;"><strong>Innovation:</strong> We continuously explore new technologies and approaches to stay at the forefront of our industry.</li>
+                    <li style="margin-bottom: 0.8rem;"><strong>Integrity:</strong> We conduct our business with honesty, transparency, and ethical practices.</li>
+                    <li style="margin-bottom: 0.8rem;"><strong>Collaboration:</strong> We believe the best solutions come from working closely with our clients and each other.</li>
+                    <li style="margin-bottom: 0.8rem;"><strong>Excellence:</strong> We strive for excellence in everything we do, from product development to customer support.</li>
+                    <li><strong>Sustainability:</strong> We develop solutions that are not only effective but also environmentally and socially responsible.</li>
+                </ul>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number">13+</span>
+                    <span class="stat-label">Years in Business</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Projects Completed</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">150+</span>
+                    <span class="stat-label">Team Members</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">40+</span>
+                    <span class="stat-label">Countries Served</span>
+                </div>
+            </div>
+            
+            <div class="content-card">
+                <h2>Our Journey</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="date">2010</div>
+                            <h3>Company Founded</h3>
+                            <p>Blue Horizon Tech was founded by three computer science graduates with a vision to democratize access to advanced technology solutions.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="date">2013</div>
+                            <h3>First Major Contract</h3>
+                            <p>Secured our first enterprise client, marking our transition from small projects to large-scale implementations.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="date">2016</div>
+                            <h3>Expansion to International Markets</h3>
+                            <p>Opened our first international office in London and began serving clients across Europe.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="date">2020</div>
+                            <h3>Cloud Division Launch</h3>
+                            <p>Launched our cloud services division to help businesses transition to remote work during the global pandemic.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="date">2023</div>
+                            <h3>AI Integration Platform</h3>
+                            <p>Introduced our flagship AI integration platform, marking our entry into artificial intelligence solutions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-card" style="text-align: center;">
+                <h2>Join Our Journey</h2>
+                <p style="margin-bottom: 1.5rem;">We're always looking for talented individuals who share our passion for technology and innovation.</p>
+                <a href="contact.html" class="btn">Get in Touch</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Blue Horizon Tech</h3>
+                    <p>Innovating tomorrow's technology today. We provide cutting-edge software solutions for modern businesses.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="products.html">Products</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Other Pages</h3>
+                    <ul>
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li>123 Tech Avenue</li>
+                        <li>San Francisco, CA 94107</li>
+                        <li>contact@bluehorizontech.com</li>
+                        <li>(555) 123-4567</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Blue Horizon Tech. All rights reserved. | This website is a project for educational purposes.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
