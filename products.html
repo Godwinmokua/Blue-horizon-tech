@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | Blue Horizon Tech</title>
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #1a365d;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #4fc3f7;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: white;
+        }
+        
+        /* Mobile Menu Toggle - CSS Only */
+        .menu-toggle-label {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            background-color: #2d4d7a;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #1a365d 0%, #2d4d7a 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Content */
+        .page-content {
+            padding: 3rem 0;
+        }
+        
+        .content-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .content-card h2 {
+            color: #1a365d;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e3f2fd;
+        }
+        
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-image {
+            height: 200px;
+            background-color: #e3f2fd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a365d;
+            font-size: 3rem;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-category {
+            display: inline-block;
+            background-color: #e3f2fd;
+            color: #1a365d;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+        
+        .product-info h3 {
+            color: #1a365d;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+        
+        .product-price {
+            color: #4fc3f7;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+        
+        .product-features {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        .product-features li {
+            padding: 0.3rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .product-features li:before {
+            content: "•";
+            color: #4fc3f7;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        
+        .comparison-table th {
+            background-color: #1a365d;
+            color: white;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .feature-check {
+            color: #4fc3f7;
+            font-weight: bold;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background-color: #4fc3f7;
+            color: #1a365d;
+            padding: 0.8rem 1.8rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #29b6f6;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .btn-small {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a365d;
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            color: #4fc3f7;
+            margin-bottom: 1.2rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #4fc3f7;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #2d4d7a;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Mobile Responsiveness - CSS Only */
+        #menu-toggle {
+            display: none;
+        }
+        
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .menu-toggle-label {
+                display: block;
+            }
+            
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: #1a365d;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
+                padding: 0;
+            }
+            
+            #menu-toggle:checked ~ nav {
+                max-height: 500px;
+                padding: 1rem 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 0.8rem;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .comparison-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .content-card {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            
+            .product-info {
+                padding: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .page-header {
+                padding: 2rem 0;
+            }
+            
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .product-image {
+                height: 150px;
+            }
+            
+            .product-price {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">Blue<span>Horizon</span>Tech</a>
+            <input type="checkbox" id="menu-toggle" style="display: none;">
+            <label for="menu-toggle" class="menu-toggle-label">☰</label>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="products.html" class="active">Products</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Products</h1>
+            <p>Innovative software solutions designed to drive business success</p>
+        </div>
+    </section>
+
+    <main class="page-content container">
+        <div class="content-card">
+            <h2>Software Products</h2>
+            <p>At Blue Horizon Tech, we develop cutting-edge software products that help businesses streamline operations, enhance productivity, and drive growth. Each product is built with the latest technologies and designed with user experience in mind.</p>
+        </div>
+        
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">📊</div>
+                <div class="product-info">
+                    <span class="product-category">Business Analytics</span>
+                    <h3>InsightPro Analytics</h3>
+                    <p>Comprehensive business intelligence platform that transforms data into actionable insights.</p>
+                    <ul class="product-features">
+                        <li>Real-time dashboards</li>
+                        <li>Predictive analytics</li>
+                        <li>Custom reporting</li>
+                        <li>Data visualization</li>
+                    </ul>
+                    <div class="product-price">$499/month</div>
+                    <a href="contact.html" class="btn btn-small">Request Demo</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">🤖</div>
+                <div class="product-info">
+                    <span class="product-category">AI Solution</span>
+                    <h3>AutoMind AI Platform</h3>
+                    <p>Enterprise AI platform for automating business processes and decision-making.</p>
+                    <ul class="product-features">
+                        <li>Machine learning models</li>
+                        <li>Natural language processing</li>
+                        <li>Automated workflows</li>
+                        <li>Custom AI training</li>
+                    </ul>
+                    <div class="product-price">$899/month</div>
+                    <a href="contact.html" class="btn btn-small">Request Demo</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">🔐</div>
+                <div class="product-info">
+                    <span class="product-category">Security</span>
+                    <h3>SecureShield Enterprise</h3>
+                    <p>Advanced cybersecurity platform protecting your digital assets from threats.</p>
+                    <ul class="product-features">
+                        <li>Threat detection</li>
+                        <li>Real-time monitoring</li>
+                        <li>Compliance management</li>
+                        <li>Incident response</li>
+                    </ul>
+                    <div class="product-price">$699/month</div>
+                    <a href="contact.html" class="btn btn-small">Request Demo</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">☁️</div>
+                <div class="product-info">
+                    <span class="product-category">Cloud Platform</span>
+                    <h3>CloudFlow Manager</h3>
+                    <p>Unified cloud management platform for multi-cloud environments.</p>
+                    <ul class="product-features">
+                        <li>Multi-cloud management</li>
+                        <li>Cost optimization</li>
+                        <li>Security compliance</li>
+                        <li>Automated scaling</li>
+                    </ul>
+                    <div class="product-price">$799/month</div>
+                    <a href="contact.html" class="btn btn-small">Request Demo</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">📱</div>
+                <div class="product-info">
+                    <span class="product-category">Mobile Solution</span>
+                    <h3>MobileSync Pro</h3>
+                    <p>Enterprise mobile solution for remote work and field operations.</p>
+                    <ul class="product-features">
+                        <li>Cross-platform support</li>
+                        <li>Offline capabilities</li>
+                        <li>Secure data sync</li>
+                        <li>Custom integrations</li>
+                    </ul>
+                    <div class="product-price">$399/month</div>
+                    <a href="contact.html" class="btn btn-small">Request Demo</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">🛒</div>
+                <div class="product-info">
+                    <span class="product-category">E-commerce</span>
+                    <h3>Commerce360 Suite</h3>
+                    <p>Complete e-commerce platform for online retail businesses.</p>
+                    <ul class="product-features">
+                        <li>Inventory management</li>
+                        <li>Payment processing</li>
+                        <li>Customer analytics</li>
+                        <li>Marketing tools</li>
+                    </ul>
+                    <div class="product-price">$599/month</div>
+                    <a href="contact.html" class="btn btn-small">Request Demo</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-card">
+            <h2>Product Comparison</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>InsightPro</th>
+                        <th>AutoMind AI</th>
+                        <th>SecureShield</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Real-time Analytics</td>
+                        <td class="feature-check">✓</td>
+                        <td class="feature-check">✓</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>AI Capabilities</td>
+                        <td>Basic</td>
+                        <td class="feature-check">Advanced</td>
+                        <td>Basic</td>
+                    </tr>
+                    <tr>
+                        <td>Security Features</td>
+                        <td>Standard</td>
+                        <td>Standard</td>
+                        <td class="feature-check">Advanced</td>
+                    </tr>
+                    <tr>
+                        <td>Cloud Integration</td>
+                        <td class="feature-check">✓</td>
+                        <td class="feature-check">✓</td>
+                        <td class="feature-check">✓</td>
+                    </tr>
+                    <tr>
+                        <td>Mobile Support</td>
+                        <td class="feature-check">✓</td>
+                        <td>✓</td>
+                        <td class="feature-check">✓</td>
+                    </tr>
+                    <tr>
+                        <td>Customization</td>
+                        <td>High</td>
+                        <td class="feature-check">Very High</td>
+                        <td>Medium</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="content-card" style="text-align: center;">
+            <h2>Need a Custom Solution?</h2>
+            <p style="margin-bottom: 1.5rem;">If our standard products don't meet your specific requirements, we can develop a custom solution tailored to your unique business needs.</p>
+            <a href="contact.html" class="btn">Discuss Custom Solution</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Blue Horizon Tech</h3>
+                    <p>Innovating tomorrow's technology today. We provide cutting-edge software solutions for modern businesses.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="products.html">Products</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Other Pages</h3>
+                    <ul>
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | Blue Horizon Tech</title>
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #1a365d;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #4fc3f7;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: white;
+        }
+        
+        /* Mobile Menu Toggle - CSS Only */
+        .menu-toggle-label {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            background-color: #2d4d7a;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #1a365d 0%, #2d4d7a 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Content */
+        .page-content {
+            padding: 3rem 0;
+        }
+        
+        .content-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .content-card h2 {
+            color: #1a365d;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e3f2fd;
+        }
+        
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-image {
+            height: 200px;
+            background-color: #e3f2fd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a365d;
+            font-size: 3rem;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-category {
+            display: inline-block;
+            background-color: #e3f2fd;
+            color: #1a365d;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+        
+        .product-info h3 {
+            color: #1a365d;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+        
+        .product-price {
+            color: #4fc3f7;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+        
+        .product-features {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        .product-features li {
+            padding: 0.3rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .product-features li:before {
+            content: "•";
+            color: #4fc3f7;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        
+        .comparison-table th {
+            background-color: #1a365d;
+            color: white;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .feature-check {
+            color: #4fc3f7;
+            font-weight: bold;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background-color: #4fc3f7;
+            color: #1a365d;
+            padding: 0.8rem 1.8rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #29b6f6;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .btn-small {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a365d;
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            color: #4fc3f7;
+            margin-bottom: 1.2rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #4fc3f7;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #2d4d7a;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Mobile Responsiveness - CSS Only */
+        #menu-toggle {
+            display: none;
+        }
+        
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .menu-toggle-label {
+                display: block;
+            }
+            
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: #1a365d;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
+                padding: 0;
+            }
+            
+            #menu-toggle:checked ~ nav {
+                max-height: 500px;
+                padding: 1rem 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 0.8rem;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .comparison-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .content-card {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            
+            .product-info {
+                padding: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .page-header {
+                padding: 2rem 0;
+            }
+            
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .product-image {
+                height: 150px;
+            }
+            
+            .product-price {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">Blue<span>Horizon</span>Tech</a>
+            <input type="checkbox" id="menu-toggle" style="display: none;">
+            <label for="menu-toggle" class="menu-toggle-label">☰</label>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="products.html" class="active">Products</a></li>
+                    <li><a href="team.html">Our Team</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Products</h1>
+            <p>Innovative software solutions designed to drive business success</p>
+        </div>
+    </section>
+
+    <main class="page-content container">
+        <div class="content-card">
+            <h2>Software Products</h2>
+            <p>At Blue Horizon Tech, we develop cutting-edge software products that help businesses streamline operations, enhance productivity, and drive growth. Each product is built with the latest technologies and designed with user experience in mind.</p>
+        </div>
+        
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">📊</div>
+                <div class="product-info">
+                    <span class="product-category">Business Analytics</span>
+                    <h3>InsightPro Analytics</h3>
+                    <p>Comprehensive business intelligence platform that transforms data into actionable insights.</p>
+                    <ul class="product-features">
+                        <li>Real-time dashboards</li>
+                        <li>Predictive analytics</li>
+                        <li>Custom reporting</li>
+                        <li>Data visualization</li>
+                    </ul>
+                    <div class="product-price">$499/month</div>
+                    <a href="contact.html" class="btn btn-small">Request Demo</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">🤖</div>
+                <div class="product-info">
+                    <span class="product-category">AI Solution</span>
+                    <h3>AutoMind AI Platform</h3>
+                    <p>Enterprise AI platform for automating business processes and decision-making.</p>
+                    <ul class="product-features">
+                        <li>Machine learning models</li>
+                        <li>Natural language processing</li>
+                        <li>Automated workflows</li>
+                        <li>Custom AI training</li>
+                    </ul>
+                    <div class="product-price">$899/month</div>
+                    <a href="contact.html" class="btn btn-small">Request Demo</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">🔐</div>
+                <div class="product-info">
+                    <span class="product-category">Security</span>
+                    <h3>SecureShield Enterprise</h3>
+                    <p>Advanced cybersecurity platform protecting your digital assets from threats.</p>
+                    <ul class="product-features">
+                        <li>Threat detection</li>
+                        <li>Real-time monitoring</li>
+                        <li>Compliance management</li>
+                        <li>Incident response</li>
+                    </ul>
+                    <div class="product-price">$699/month</div>
+                    <a href="contact.html" class="btn btn-small">Request Demo</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">☁️</div>
+                <div class="product-info">
+                    <span class="product-category">Cloud Platform</span>
+                    <h3>CloudFlow Manager</h3>
+                    <p>Unified cloud management platform for multi-cloud environments.</p>
+                    <ul class="product-features">
+                        <li>Multi-cloud management</li>
+                        <li>Cost optimization</li>
+                        <li>Security compliance</li>
+                        <li>Automated scaling</li>
+                    </ul>
+                    <div class="product-price">$799/month</div>
+                    <a href="contact.html" class="btn btn-small">Request Demo</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">📱</div>
+                <div class="product-info">
+                    <span class="product-category">Mobile Solution</span>
+                    <h3>MobileSync Pro</h3>
+                    <p>Enterprise mobile solution for remote work and field operations.</p>
+                    <ul class="product-features">
+                        <li>Cross-platform support</li>
+                        <li>Offline capabilities</li>
+                        <li>Secure data sync</li>
+                        <li>Custom integrations</li>
+                    </ul>
+                    <div class="product-price">$399/month</div>
+                    <a href="contact.html" class="btn btn-small">Request Demo</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">🛒</div>
+                <div class="product-info">
+                    <span class="product-category">E-commerce</span>
+                    <h3>Commerce360 Suite</h3>
+                    <p>Complete e-commerce platform for online retail businesses.</p>
+                    <ul class="product-features">
+                        <li>Inventory management</li>
+                        <li>Payment processing</li>
+                        <li>Customer analytics</li>
+                        <li>Marketing tools</li>
+                    </ul>
+                    <div class="product-price">$599/month</div>
+                    <a href="contact.html" class="btn btn-small">Request Demo</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-card">
+            <h2>Product Comparison</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>InsightPro</th>
+                        <th>AutoMind AI</th>
+                        <th>SecureShield</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Real-time Analytics</td>
+                        <td class="feature-check">✓</td>
+                        <td class="feature-check">✓</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>AI Capabilities</td>
+                        <td>Basic</td>
+                        <td class="feature-check">Advanced</td>
+                        <td>Basic</td>
+                    </tr>
+                    <tr>
+                        <td>Security Features</td>
+                        <td>Standard</td>
+                        <td>Standard</td>
+                        <td class="feature-check">Advanced</td>
+                    </tr>
+                    <tr>
+                        <td>Cloud Integration</td>
+                        <td class="feature-check">✓</td>
+                        <td class="feature-check">✓</td>
+                        <td class="feature-check">✓</td>
+                    </tr>
+                    <tr>
+                        <td>Mobile Support</td>
+                        <td class="feature-check">✓</td>
+                        <td>✓</td>
+                        <td class="feature-check">✓</td>
+                    </tr>
+                    <tr>
+                        <td>Customization</td>
+                        <td>High</td>
+                        <td class="feature-check">Very High</td>
+                        <td>Medium</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="content-card" style="text-align: center;">
+            <h2>Need a Custom Solution?</h2>
+            <p style="margin-bottom: 1.5rem;">If our standard products don't meet your specific requirements, we can develop a custom solution tailored to your unique business needs.</p>
+            <a href="contact.html" class="btn">Discuss Custom Solution</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Blue Horizon Tech</h3>
+                    <p>Innovating tomorrow's technology today. We provide cutting-edge software solutions for modern businesses.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="products.html">Products</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Other Pages</h3>
+                    <ul>
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li>123 Tech Avenue</li>
+                        <li>San Francisco, CA 94107</li>
+                        <li>contact@bluehorizontech.com</li>
+                        <li>(555) 123-4567</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Blue Horizon Tech. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Blue Horizon Tech. All rights reserved. | This website is a project for educational purposes.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

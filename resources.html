@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources | Blue Horizon Tech</title>
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #1a365d;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #4fc3f7;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: white;
+        }
+        
+        /* Mobile Menu Toggle - CSS Only */
+        .menu-toggle-label {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            background-color: #2d4d7a;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #1a365d 0%, #2d4d7a 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Content */
+        .page-content {
+            padding: 3rem 0;
+        }
+        
+        .content-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .content-card h2 {
+            color: #1a365d;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e3f2fd;
+        }
+        
+        /* Resource Categories */
+        .category-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 2rem 0;
+        }
+        
+        .tab-input {
+            display: none;
+        }
+        
+        .tab-label {
+            padding: 0.6rem 1.2rem;
+            background-color: #e3f2fd;
+            border-radius: 4px;
+            color: #1a365d;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .tab-input:checked + .tab-label {
+            background-color: #4fc3f7;
+            color: white;
+        }
+        
+        .tab-label:hover {
+            background-color: #bbdefb;
+        }
+        
+        /* Resources Grid */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .resource-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .resource-icon {
+            height: 120px;
+            background-color: #e3f2fd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a365d;
+            font-size: 2.5rem;
+        }
+        
+        .resource-info {
+            padding: 1.5rem;
+        }
+        
+        .resource-type {
+            display: inline-block;
+            background-color: #e3f2fd;
+            color: #1a365d;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+        
+        .resource-info h3 {
+            color: #1a365d;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+        
+        .resource-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            margin-top: 3rem;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            position: relative;
+            font-weight: 600;
+            color: #1a365d;
+        }
+        
+        .faq-question:after {
+            content: '+';
+            position: absolute;
+            right: 1.5rem;
+            font-size: 1.5rem;
+            color: #4fc3f7;
+        }
+        
+        .faq-answer {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+        }
+        
+        .faq-input {
+            display: none;
+        }
+        
+        .faq-input:checked + .faq-question + .faq-answer {
+            padding: 1.5rem;
+            max-height: 500px;
+        }
+        
+        .faq-input:checked + .faq-question:after {
+            content: '−';
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            background: linear-gradient(135deg, #1a365d 0%, #2d4d7a 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            margin-top: 3rem;
+            text-align: center;
+        }
+        
+        .newsletter h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .newsletter-form {
+            max-width: 500px;
+            margin: 2rem auto 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            min-width: 200px;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background-color: #4fc3f7;
+            color: #1a365d;
+            padding: 0.8rem 1.8rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #29b6f6;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: #1a365d;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a365d;
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            color: #4fc3f7;
+            margin-bottom: 1.2rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #4fc3f7;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #2d4d7a;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Mobile Responsiveness - CSS Only */
+        #menu-toggle {
+            display: none;
+        }
+        
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .menu-toggle-label {
+                display: block;
+            }
+            
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: #1a365d;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
+                padding: 0;
+            }
+            
+            #menu-toggle:checked ~ nav {
+                max-height: 500px;
+                padding: 1rem 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 0.8rem;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .category-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tab-label {
+                width: 80%;
+                text-align: center;
+                margin-bottom: 0.5rem;
+            }
+            
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .newsletter {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-input {
+                width: 100%;
+            }
+            
+            .content-card {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .page-header {
+                padding: 2rem 0;
+            }
+            
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .resource-icon {
+                height: 100px;
+            }
+            
+            .resource-info {
+                padding: 1rem;
+            }
+            
+            .faq-question {
+                padding: 1rem;
+            }
+            
+            .faq-question:after {
+                right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">Blue<span>Horizon</span>Tech</a>
+            <input type="checkbox" id="menu-toggle" style="display: none;">
+            <label for="menu-toggle" class="menu-toggle-label">☰</label>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="resources.html" class="active">Resources</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Resources</h1>
+            <p>Helpful guides, documentation, and tools for your technology journey</p>
+        </div>
+    </section>
+
+    <main class="page-content container">
+        <div class="content-card">
+            <h2>Knowledge Center</h2>
+            <p>Explore our collection of resources designed to help you navigate the world of technology. From beginner guides to advanced technical documentation, we have materials to support your learning and development.</p>
+            
+            <div class="category-tabs">
+                <input type="radio" name="resource-category" id="tab-all-resources" class="tab-input" checked>
+                <label for="tab-all-resources" class="tab-label">All Resources</label>
+                
+                <input type="radio" name="resource-category" id="tab-guides" class="tab-input">
+                <label for="tab-guides" class="tab-label">Guides & Tutorials</label>
+                
+                <input type="radio" name="resource-category" id="tab-whitepapers" class="tab-input">
+                <label for="tab-whitepapers" class="tab-label">Whitepapers</label>
+                
+                <input type="radio" name="resource-category" id="tab-tools" class="tab-input">
+                <label for="tab-tools" class="tab-label">Tools</label>
+            </div>
+        </div>
+        
+        <!-- All Resources -->
+        <div class="resources-grid">
+            <div class="resource-card">
+                <div class="resource-icon">📖</div>
+                <div class="resource-info">
+                    <span class="resource-type">Guide</span>
+                    <h3>Cloud Migration Best Practices</h3>
+                    <p>A comprehensive guide to successfully migrating your infrastructure to the cloud with minimal disruption.</p>
+                    <div class="resource-meta">
+                        <span>PDF • 25 pages</span>
+                        <span>Download</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="resource-card">
+                <div class="resource-icon">📄</div>
+                <div class="resource-info">
+                    <span class="resource-type">Whitepaper</span>
+                    <h3>AI in Modern Business</h3>
+                    <p>Explore how artificial intelligence is transforming industries and creating new opportunities.</p>
+                    <div class="resource-meta">
+                        <span>PDF • 40 pages</span>
+                        <span>Download</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="resource-card">
+                <div class="resource-icon">🛠️</div>
+                <div class="resource-info">
+                    <span class="resource-type">Tool</span>
+                    <h3>Project Planning Template</h3>
+                    <p>A customizable template for planning and managing technology projects effectively.</p>
+                    <div class="resource-meta">
+                        <span>Excel • Template</span>
+                        <span>Download</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="resource-card">
+                <div class="resource-icon">📖</div>
+                <div class="resource-info">
+                    <span class="resource-type">Guide</span>
+                    <h3>Cybersecurity Essentials</h3>
+                    <p>Essential cybersecurity practices every business should implement to protect their data.</p>
+                    <div class="resource-meta">
+                        <span>PDF • 30 pages</span>
+                        <span>Download</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="resource-card">
+                <div class="resource-icon">📄</div>
+                <div class="resource-info">
+                    <span class="resource-type">Whitepaper</span>
+                    <h3>Digital Transformation Roadmap</h3>
+                    <p>A strategic framework for navigating digital transformation in your organization.</p>
+                    <div class="resource-meta">
+                        <span>PDF • 35 pages</span>
+                        <span>Download</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="resource-card">
+                <div class="resource-icon">🛠️</div>
+                <div class="resource-info">
+                    <span class="resource-type">Tool</span>
+                    <h3>Technology Assessment Checklist</h3>
+                    <p>Evaluate your current technology stack and identify areas for improvement.</p>
+                    <div class="resource-meta">
+                        <span>PDF • Checklist</span>
+                        <span>Download</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="faq-section content-card">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <input type="checkbox" id="faq1" class="faq-input">
+                <label for="faq1" class="faq-question">What industries do you serve?</label>
+                <div class="faq-answer">
+                    <p>We serve a wide range of industries including healthcare, finance, retail, manufacturing, education, and technology. Our solutions are tailored to meet the specific needs of each industry.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <input type="checkbox" id="faq2" class="faq-input">
+                <label for="faq2" class="faq-question">How long does a typical project take?</label>
+                <div class="faq-answer">
+                    <p>Project timelines vary based on complexity and scope. Small projects may take 2-3 months, while large enterprise implementations can take 6-12 months. We provide detailed timelines during the planning phase.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <input type="checkbox" id="faq3" class="faq-input">
+                <label for="faq3" class="faq-question">Do you offer ongoing support?</label>
+                <div class="faq-answer">
+                    <p>Yes, we offer comprehensive support packages including maintenance, updates, technical support, and training. Our support plans are customizable to your specific needs.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <input type="checkbox" id="faq4" class="faq-input">
+                <label for="faq4" class="faq-question">What technologies do you specialize in?</label>
+                <div class="faq-answer">
+                    <p>We specialize in cloud technologies (AWS, Azure, Google Cloud), AI/ML, web and mobile development, cybersecurity, data analytics, and enterprise software solutions.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <input type="checkbox" id="faq5" class="faq-input">
+                <label for="faq5" class="faq-question">How do you ensure project quality?</label>
+                <div class="faq-answer">
+                    <p>We follow industry best practices including agile methodology, continuous testing, code reviews, and quality assurance processes. We also provide regular updates and involve clients throughout the development process.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="newsletter">
+            <h2>Stay Updated</h2>
+            <p>Subscribe to our newsletter to receive the latest technology insights, resources, and company updates.</p>
+            
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                <button type="submit" class="btn btn-outline">Subscribe</button>
+            </form>
+        </div>
+        
+        <div class="content-card" style="text-align: center;">
+            <h2>Need Additional Resources?</h2>
+            <p style="margin-bottom: 1.5rem;">Can't find what you're looking for? Contact our team for personalized assistance and additional resources.</p>
+            <a href="contact.html" class="btn">Contact Our Team</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Blue Horizon Tech</h3>
+                    <p>Innovating tomorrow's technology today. We provide cutting-edge software solutions for modern businesses.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="products.html">Products</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Other Pages</h3>
+                    <ul>
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li>Tech Avenue</li>
+                        <li>Nairobi, Kenya</li>
+                        <li>contact@bluehorizontech.com</li>
+                        <li>+254727691046</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Blue Horizon Tech. All rights reserved.</p>
+            </div>
+        </div>
+        </div>
+    </footer>
+</body>
+</html>
